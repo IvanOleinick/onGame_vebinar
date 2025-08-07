@@ -1,6 +1,7 @@
 import type {Topic} from "../data/questions.ts";
 import {useContext} from "react";
 import {UserNameContext} from "../utils/context.ts";
+import * as React from "react";
 
 interface Props {
     topics: Topic[],
@@ -13,30 +14,33 @@ interface Props {
 }
 
 const GameBoard = ({topics, onQuestionClick}: Props) => {
-    const  {userName}= useContext(UserNameContext)
+    const {userName} = useContext(UserNameContext)
+
     return (
-        <div className="game-board">
-            <h1>{userName}</h1>
-            {topics.map((topic, i) =>
-                <div key={i} className="topic-column">
-                    <h3 className="topic-title">{topic.title}</h3>
-                    {topic.questions.map((q, i) =>
-                        <button 
-                            key={i} 
-                            className="question-cell"
-                            onClick={() => onQuestionClick({
-                                title: topic.title,
-                                price: q.price,
-                                question: q.question,
-                                answer: q.answer
-                            })}
-                        >
-                            {q.price}
-                        </button>
-                    )}
-                </div>
-            )}
-        </div>
+        <>
+            <div className="user-name">{userName}</div>
+            <div className="game-board">
+                {topics.map((topic, i) =>
+                    <div key={i} className="topic-column">
+                        <h3 className="topic-title">{topic.title}</h3>
+                        {topic.questions.map((q, i) =>
+                            <button
+                                key={i}
+                                className="question-cell"
+                                onClick={() => onQuestionClick({
+                                    title: topic.title,
+                                    price: q.price,
+                                    question: q.question,
+                                    answer: q.answer
+                                })}
+                            >
+                                {q.price}
+                            </button>
+                        )}
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 

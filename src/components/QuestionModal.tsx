@@ -6,9 +6,10 @@ interface Props {
     question: string,
     answer: string,
     onClose: () => void
+    onCorrect: () => void
 }
 
-const QuestionModal = ({title, price, question, answer, onClose}: Props) => {
+const QuestionModal = ({title, price, question, answer, onClose, onCorrect}: Props) => {
     const [showAnswer, setShowAnswer] = useState(false);
 
     return (
@@ -18,7 +19,7 @@ const QuestionModal = ({title, price, question, answer, onClose}: Props) => {
                 <div className="price">${price}</div>
                 <div className="question">{question}</div>
                 {!showAnswer ? (
-                    <button 
+                    <button
                         className="show-answer-btn"
                         onClick={() => setShowAnswer(true)}
                     >
@@ -27,11 +28,19 @@ const QuestionModal = ({title, price, question, answer, onClose}: Props) => {
                 ) : (
                     <div className="answer-container">
                         <div className="answer">{answer}</div>
-                        <button 
+                        <button
+                            className="close-btn"
+                            onClick={()=>{
+                                onCorrect();
+                                onClose()}}
+                        >
+                            Правильно
+                        </button>
+                        <button
                             className="close-btn"
                             onClick={onClose}
                         >
-                            Закрыть
+                            Неправильно
                         </button>
                     </div>
                 )}

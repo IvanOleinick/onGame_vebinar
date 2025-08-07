@@ -24,6 +24,15 @@ body {
 }
 
 /* Игровое поле */
+.user-name {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    z-index: 999;
+}
+
 .game-board {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

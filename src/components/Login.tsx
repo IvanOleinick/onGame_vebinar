@@ -12,13 +12,13 @@ const Login = () => {
     }
     return (
         <div>
-            <label>Login
+            <label className={'font-bold text-2xl'}>Login
                 <input ref={userName} type="text" placeholder={"Your name"}/>
             </label>
-            <label>Password
-                <input  type="password" placeholder={"Your password"}/>
+            <label className={'font-bold text-2xl'}>Password
+                <input   type="password" placeholder={"Your password"}/>
                 <NavLink to={"/game"}>
-                <button onClick={()=>handleSetNickName()}>Sign In</button>
+                <button  className={'close-btn'} onClick={()=>handleSetNickName()}>Sign In</button>
             </NavLink>
             </label>
 
