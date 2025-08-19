@@ -1,10 +1,10 @@
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {changeLogin} from "../actions/userAction.ts";
-import type {StateInterface} from "../utils/types.ts";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../app/hooks.ts";
+import {changeLogin} from "../features/userSlice.ts";
 
 const UserData = () => {
-    const userName = useSelector<StateInterface>(state => state.user.login);
+    const userName = useAppSelector(state => state.userLayer.user.login);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

@@ -1,13 +1,13 @@
 import {useRef} from "react";
-import {useDispatch} from "react-redux";
-import {changeLogin} from "../actions/userAction.ts";
 import {useNavigate} from "react-router-dom";
 import {addDoc, collection} from "firebase/firestore";
 import {db} from "../data/firestore.ts";
+import {changeLogin} from "../features/userSlice.ts";
+import {useAppDispatch} from "../app/hooks.ts";
 
 const Login = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const userName = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
